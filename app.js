@@ -8,6 +8,7 @@ const uploadRoute = require('./routes/upload');
 const postRoutes = require('./routes/postRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const userRoutes = require('./routes/userRoutes');
+const imageRoutes = require('./routes/imageRouter');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoute);
+app.use('/api/image', imageRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
