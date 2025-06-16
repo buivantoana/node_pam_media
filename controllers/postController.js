@@ -1,7 +1,6 @@
 const Post = require('../models/Post');
 
 const mongoose = require("mongoose");
-
 exports.getAll = async (req, res) => {
   try {
     const { limit, skip, categories, type } = req.query;

@@ -6,9 +6,11 @@ dotenv.config();
 
 const uploadRoute = require('./routes/upload');
 const postRoutes = require('./routes/postRoutes');
+const prodRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const userRoutes = require('./routes/userRoutes');
 const imageRoutes = require('./routes/imageRouter');
+const companyRoutes = require('./routes/company');
 
 const app = express();
 app.use(express.json({ limit: '10mb' }));
@@ -22,9 +24,11 @@ mongoose.connect(process.env.MONGO_URI)
    .catch(err => console.error(err));
 
 app.use('/api/posts', postRoutes);
+app.use('/api/products', prodRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoute);
 app.use('/api/image', imageRoutes);
+app.use('/api/companies', companyRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
