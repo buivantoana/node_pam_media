@@ -7,8 +7,11 @@ const dynamicImageSchema = new mongoose.Schema(
     recruitment: {
       rightImage1: String,
       leftImage2: String,
-      title2: String,
+      title3: String,
+      title4: String,
       description: String,
+      description2: String,
+      description3: String,
     },
 
     cooperate: {
@@ -45,7 +48,11 @@ const dynamicImageSchema = new mongoose.Schema(
       bannerRightBottom: String,
       title1: String,
       title2: String,
+      title3: String,
+      title4: String,
       description: String,
+      description2: String,
+      description3: String,
     },
 
     channelSliderImages: [String], // shared by recruitment and home
