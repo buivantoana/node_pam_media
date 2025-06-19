@@ -7,6 +7,8 @@ const dynamicImageSchema = new mongoose.Schema(
     recruitment: {
       rightImage1: String,
       leftImage2: String,
+      title2: String,
+      description: String,
     },
 
     cooperate: {
