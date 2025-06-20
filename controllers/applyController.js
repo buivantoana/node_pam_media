@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const fs = require("fs");
+const MailConfig = require("../models/MailConfig");
 require("dotenv").config();
 
 exports.handleJobApplication = async (req, res) => {
@@ -10,7 +11,8 @@ exports.handleJobApplication = async (req, res) => {
     if (!name || !email || !phone || !position || !file) {
       return res.status(400).json({ message: "Thiếu thông tin bắt buộc" });
     }
-
+    const activeMail = await MailConfig.findOne({ primary: true });
+    const toEmail = activeMail?.email || process.env.MAIL_RECEIVER;
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -21,7 +23,7 @@ exports.handleJobApplication = async (req, res) => {
 
     await transporter.sendMail({
       from: `"Website Tuyển Dụng" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_RECEIVER,
+      to: toEmail? toEmail: process.env.MAIL_RECEIVER,
       subject: `Ứng tuyển: ${position} - ${name}`,
       html: `
         <p><strong>Họ tên:</strong> ${name}</p>
