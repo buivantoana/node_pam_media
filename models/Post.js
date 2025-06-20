@@ -20,6 +20,7 @@ const postSchema = new mongoose.Schema({
    jobDetail: jobDetailSchema,
    createdAt: { type: Date, default: Date.now },
    updatedAt: { type: Date, default: Date.now },
+   qty:Number
 });
 
 module.exports = mongoose.model('Post', postSchema);
